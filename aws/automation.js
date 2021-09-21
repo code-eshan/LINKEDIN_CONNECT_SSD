@@ -1,5 +1,26 @@
 var request = require('request');
 
+function getAccessToken(authCode, done) {
+    request.post({
+        url: "https://www.linkedin.com/oauth/v2/accessToken", form: {
+            grant_type: 'authorization_code',
+            code: authCode,
+            redirect_uri: "https://gtn8uomt6i.execute-api.us-east-2.amazonaws.com/default/linkedin-connect",
+            client_id: "78xsv6k3u0sqcr",
+            client_secret: "ITpEniGVXDenk8z3",
+        }
+    }, function (err, res, responseBody) {
+        if (err) {
+            console.log(err);
+            done(err, null);
+        }
+        else {
+            console.log(responseBody);
+            done(null, JSON.parse(responseBody));
+        }
+    });
+}
+
 function main(authCode, done) {
 }
 

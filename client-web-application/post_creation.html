@@ -138,6 +138,16 @@
         document.getElementById("emailField").innerHTML = "EMAIL : " + EMAIL_VALUE;
         document.getElementById("profileId").innerHTML = "PROFILE ID : " + PROFILEID_VALUE;
         document.getElementById("display-pic").setAttribute("src", DISPLAYPICTURE_LINK);
+        
+        function getActivityId(URL) {
+
+            URL = URL.split("activity-");
+            URL = URL[1].split("-");
+
+            let activityID = URL[0];
+            return activityID;
+
+        }
 
     </script>
 </body>

@@ -1,5 +1,18 @@
 var request = require('request');
 
+function callMeAPI(accessToken, done) {
+    request.get({ url: "https://api.linkedin.com/v2/me", headers: { "Authorization": "Bearer " + accessToken } }, function (err, res, responseBody) {
+        if (err) {
+            console.log(err);
+            done(err, null);
+        }
+        else {
+            console.log(responseBody);
+            done(null, JSON.parse(responseBody));
+        }
+    });
+}
+
 function getAccessToken(authCode, done) {
     request.post({
         url: "https://www.linkedin.com/oauth/v2/accessToken", form: {

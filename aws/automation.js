@@ -13,6 +13,32 @@ function callMeAPI(accessToken, done) {
     });
 }
 
+function callEmailAPI(accessToken, done) {
+    request.get({ url: "https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))", headers: { "Authorization": "Bearer " + accessToken } }, function (err, res, responseBody) {
+        if (err) {
+            console.log(err);
+            done(err, null);
+        }
+        else {
+            console.log(responseBody);
+            done(null, JSON.parse(responseBody));
+        }
+    });
+}
+
+function getDisplayPicture(accessToken, done) {
+    request.get({ url: "https://api.linkedin.com/v2/me?projection=(profilePicture(displayImage~:playableStreams))", headers: { "Authorization": "Bearer " + accessToken } }, function (err, res, responseBody) {
+        if (err) {
+            console.log(err);
+            done(err, null);
+        }
+        else {
+            console.log(responseBody);
+            done(null, JSON.parse(responseBody));
+        }
+    });
+}
+
 function getAccessToken(authCode, done) {
     request.post({
         url: "https://www.linkedin.com/oauth/v2/accessToken", form: {

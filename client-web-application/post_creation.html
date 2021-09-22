@@ -104,6 +104,42 @@
             <br />
         </div>
     </section>
+    
+    <script>
+        var parameters = location.search.substring(1).split("&");
+        console.log(parameters);
+
+        var ACCESS_TOKEN = parameters[0].split("=");
+        ACCESS_TOKEN_VALUE = unescape(ACCESS_TOKEN[1]);
+        console.log(ACCESS_TOKEN_VALUE);
+
+        var FIRSTNAME = parameters[1].split("=");
+        FIRSTNAME_VALUE = unescape(FIRSTNAME[1]);
+        console.log(FIRSTNAME_VALUE);
+
+        var LASTNAME = parameters[2].split("=");
+        LASTNAME_VALUE = unescape(LASTNAME[1]);
+        console.log(LASTNAME_VALUE);
+
+        var PROFILEID = parameters[3].split("=");
+        PROFILEID_VALUE = unescape(PROFILEID[1]);
+        console.log(PROFILEID_VALUE);
+
+        var EMAIL = parameters[4].split("=");
+        EMAIL_VALUE = unescape(EMAIL[1]);
+        console.log(EMAIL_VALUE);
+
+        var parametersSplitForDPLink = location.search.substring(1).split("&LINK&");
+
+        var DISPLAYPICTURE_LINK = parametersSplitForDPLink[1].substring(15);
+        console.log(DISPLAYPICTURE_LINK);
+
+        document.getElementById("welcomeMessage").innerHTML = "Welcome " + FIRSTNAME_VALUE + " " + LASTNAME_VALUE + " !";
+        document.getElementById("emailField").innerHTML = "EMAIL : " + EMAIL_VALUE;
+        document.getElementById("profileId").innerHTML = "PROFILE ID : " + PROFILEID_VALUE;
+        document.getElementById("display-pic").setAttribute("src", DISPLAYPICTURE_LINK);
+
+    </script>
 </body>
 
 </html>

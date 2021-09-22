@@ -95,6 +95,18 @@ function main(authCode, done) {
 }
 
 exports.handler = (event, context, callback) => {
+    const done = (err, res) => callback(null, {
+        statusCode: err ? '400' : '302',
+        body: err ? err.message : JSON.stringify({ "name": "eeshan" }),
+        headers: {
+            'Location': 'https://linkedin-connect-post.herokuapp.com?ACCESSTOKEN=' + ACCESSTOKEN + '&FIRSTNAME=' + FIRSTNAME
+             + '&LASTNAME=' + LASTNAME + '&PROFILEID=' + PROFILEID + '&EMAIL=' + EMAIL + "&LINK&DISPLAYPICTURE=" + DISPLAYPICTURE_LINK,
+            'Content-Type': 'text/html',
+            'Access-Control-Allow-Methods': 'DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT',
+            'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+            'Access-Control-Allow-Origin': '*'
+        },
+    });
     if (event) {
         switch (event.httpMethod) {
             case 'GET':

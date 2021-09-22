@@ -1,5 +1,7 @@
 var request = require('request');
 
+var FIRSTNAME, LASTNAME, EMAIL, ACCESSTOKEN, PROFILEID, DISPLAYPICTURE_LINK;
+
 function callMeAPI(accessToken, done) {
     request.get({ url: "https://api.linkedin.com/v2/me", headers: { "Authorization": "Bearer " + accessToken } }, function (err, res, responseBody) {
         if (err) {
@@ -61,6 +63,35 @@ function getAccessToken(authCode, done) {
 }
 
 function main(authCode, done) {
+    getAccessToken(authCode, function (err, res) {
+        if (err) { done(err) }
+        else {
+            var access_token = res.access_token;
+            callMeAPI(access_token, function (err, res) {
+                if (err) { done(err) }
+                else {
+                    FIRSTNAME = res.localizedFirstName;
+                    LASTNAME = res.localizedLastName;
+                    PROFILEID = res.id;
+                    ACCESSTOKEN = access_token;
+                    callEmailAPI(access_token, function (err, res) {
+                        if (err) { done(err) }
+                        else {
+                            EMAIL = res.elements[0]["handle~"].emailAddress;
+
+                            getDisplayPicture(access_token, function (err, res) {
+                                if (err) { done(err) }
+                                else {
+                                    DISPLAYPICTURE_LINK = res.profilePicture["displayImage~"].elements[3].identifiers[0].identifier;
+                                    done(null, "success");
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
 }
 
 exports.handler = (event, context, callback) => {

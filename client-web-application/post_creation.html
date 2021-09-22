@@ -149,6 +149,47 @@
 
         }
         
+        document.getElementById("post-link").onclick = function () {
+
+            let shareUrl = encodeURIComponent(document.getElementById("post-url").value);
+            let shareTitle = document.getElementById("share-title").value;
+            let shareText = document.getElementById("share-text").value;
+
+            if (shareUrl.length === 0 || shareTitle.length === 0 || shareText.length === 0) {
+
+                alert("\n                              PLEASE FILL IN ALL THE FIELDS !");
+
+            } else {
+
+                $.ajax({
+                    url: 'http://localhost/linkedin/?LINK=' + shareUrl + '&ACCESS_TOKEN=' + ACCESS_TOKEN_VALUE + '&ID=' + PROFILEID_VALUE + '&TITLE=' + shareTitle + '&TEXT=' + shareText,
+                    type: 'GET',
+                    dataType: "jsonp",
+                    headers: {
+                        "Allow-Control-Allow-Origin": "*"
+                    },
+                    success: function (res) {
+                        window.open("https://www.linkedin.com/", "_blank");
+
+                        document.getElementById("post-url").value = ""
+                        document.getElementById("share-title").value = ""
+                        document.getElementById("share-text").value = ""
+
+                        console.log(res);
+                    },
+                    error: function (err) {
+                        window.open("https://www.linkedin.com/", "_blank");
+
+                        document.getElementById("post-url").value = ""
+                        document.getElementById("share-title").value = ""
+                        document.getElementById("share-text").value = ""
+                        console.log(err);
+                    }
+                });
+
+            }
+        }
+        
         document.getElementById("post-like").onclick = function () {
 
             let url = document.getElementById("like-url").value;

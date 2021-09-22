@@ -177,6 +177,34 @@
 
         }
         
+        document.getElementById("comment-post").onclick = function () {
+
+            let url = document.getElementById("comment-url").value;
+            let comment = document.getElementById("comment").value;
+            let activityID = getActivityId(url);
+
+            $.ajax({
+                url: 'http://localhost/linkedin/comment-post.php?ID=' + PROFILEID_VALUE + '&ACTIVITY_ID=' + activityID + '&ACCESS_TOKEN=' + ACCESS_TOKEN_VALUE + '& COMMENT=' + comment,
+                type: 'GET',
+                dataType: "jsonp",
+                headers: {
+                    "Allow-Control-Allow-Origin": "*"
+                },
+                success: function (res) {
+                    window.open(url, "_blank");
+                    document.getElementById("comment-url").value = ""
+                    document.getElementById("comment").value = ""
+                    console.log(res);
+                },
+                error: function (err) {
+                    window.open(url, "_blank");
+                    document.getElementById("comment-url").value = ""
+                    document.getElementById("comment").value = ""
+                    console.log(err);
+                }
+            });
+        }
+        
 
     </script>
 </body>

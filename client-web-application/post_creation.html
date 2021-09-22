@@ -18,11 +18,10 @@
             <hr style="opacity: 100%; width: 20%; align-self: center; background-color: #006097; height: 5px;" />
             <div class="text">
                 <div style="text-align: center; margin-top: 20px;">
-                    <img style="border-radius: 50%; border-style: groove; border-color: deeppink; border-width: 8px;"
-                        id="display-pic" onclick="post()" width="180px" height="180px" />
+                    <img style="border-radius: 50%; border-style: groove; border-color: deeppink; border-width: 8px;" id="display-pic"
+                        onclick="post()" width="180px" height="180px" />
                 </div>
-                <h2 id="welcomeMessage" style="font-family: monospace; color: white; font-size: 25px;">Welcome Mark
-                    Zuckerberg !</h2>
+                <h2 id="welcomeMessage" style="font-family: monospace; color: white; font-size: 25px;">Welcome Mark Zuckerberg !</h2>
                 <div class="mid-last">
                     <h3 style="font-size: 18px; color: #00ff2a; font-family: monospace;" id="emailField">Email</h3>
                     <h3 style="font-size: 12px; color: yellow; font-family: monospace;" id="profileId">ProfileID</h3>
@@ -30,8 +29,7 @@
                 <br />
                 <hr />
                 <br />
-                <p style="text-transform: uppercase; color: white; font-family: monospace;">Try sharing a url in
-                    LinkedIn !</p>
+                <p style="text-transform: uppercase; color: white; font-family: monospace;">Try sharing a url in LinkedIn !</p>
             </div>
             <div class="input-group">
                 <input id="post-url" type="text" required>
@@ -48,18 +46,14 @@
             <input type="button" id="post-link" value="SHARE IT !">
             <br />
             <a href="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/share-api?tabs=http#post-shares"
-                style="color: rgb(251, 255, 0); text-decoration: none; cursor: pointer; text-align: center;"
-                target="_blank"> >>
+                style="color: rgb(251, 255, 0); text-decoration: none; cursor: pointer; text-align: center;" target="_blank"> >>
                 Refer Documentation</a>
             <br />
             <hr />
             <br />
             <div class="text">
-                <p style="text-transform: uppercase; color: white; font-family: monospace;">Try providing a URL below to
-                    Like IT !</p>
-                <p
-                    style="text-transform: uppercase; font-size: 10px; color: rgb(0, 255, 234); font-weight: normal; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: crimson; font-weight: bold;">
-                    Select a post
+                <p style="text-transform: uppercase; color: white; font-family: monospace;">Try providing a URL below to Like IT !</p>
+                <p style="text-transform: uppercase; font-size: 10px; color: rgb(0, 255, 234); font-weight: normal; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: crimson; font-weight: bold;">Select a post
                     from Linkedin,<br /> click the three dots on the right top corner, <br /> and select Copy Link to
                     Post and paste here.</p>
             </div>
@@ -70,18 +64,14 @@
             <input type="button" id="post-like" value="LIKE IT !">
             <br />
             <a href="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions?tabs=http#create-a-like-on-a-share"
-                style="color: rgb(251, 255, 0); text-decoration: none; cursor: pointer; text-align: center;"
-                target="_blank"> >>
+                style="color: rgb(251, 255, 0); text-decoration: none; cursor: pointer; text-align: center;" target="_blank"> >>
                 Refer Documentation</a>
             <br />
             <hr />
             <br />
             <div class="text">
-                <p style="text-transform: uppercase; color: white; font-family: monospace;">Try providing a URL below
-                    with a Comment !</p>
-                <p
-                    style="text-transform: uppercase; font-size: 10px; color: rgb(0, 255, 234); font-weight: normal; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: crimson; font-weight: bold;">
-                    Select a post
+                <p style="text-transform: uppercase; color: white; font-family: monospace;">Try providing a URL below with a Comment !</p>
+                <p style="text-transform: uppercase; font-size: 10px; color: rgb(0, 255, 234); font-weight: normal; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: crimson; font-weight: bold;">Select a post
                     from Linkedin,<br /> click the three dots on the right top corner, <br /> and select Copy Link to
                     Post and paste here.</p>
             </div>
@@ -96,15 +86,14 @@
             <input type="button" id="comment-post" value="COMMENT IT !">
             <br />
             <a href="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions?tabs=http#create-comment"
-                style="color: rgb(251, 255, 0); text-decoration: none; cursor: pointer; text-align: center;"
-                target="_blank"> >>
+                style="color: rgb(251, 255, 0); text-decoration: none; cursor: pointer; text-align: center;" target="_blank"> >>
                 Refer Documentation</a>
             <br />
             <hr />
             <br />
         </div>
     </section>
-    
+
     <script>
         var parameters = location.search.substring(1).split("&");
         console.log(parameters);
@@ -138,17 +127,18 @@
         document.getElementById("emailField").innerHTML = "EMAIL : " + EMAIL_VALUE;
         document.getElementById("profileId").innerHTML = "PROFILE ID : " + PROFILEID_VALUE;
         document.getElementById("display-pic").setAttribute("src", DISPLAYPICTURE_LINK);
-        
+
         function getActivityId(URL) {
 
             URL = URL.split("activity-");
             URL = URL[1].split("-");
 
             let activityID = URL[0];
+            // console.log(activityID);
             return activityID;
 
         }
-        
+
         document.getElementById("post-link").onclick = function () {
 
             let shareUrl = encodeURIComponent(document.getElementById("post-url").value);
@@ -189,7 +179,7 @@
 
             }
         }
-        
+
         document.getElementById("post-like").onclick = function () {
 
             let url = document.getElementById("like-url").value;
@@ -217,7 +207,7 @@
             });
 
         }
-        
+
         document.getElementById("comment-post").onclick = function () {
 
             let url = document.getElementById("comment-url").value;
@@ -245,7 +235,6 @@
                 }
             });
         }
-        
 
     </script>
 </body>

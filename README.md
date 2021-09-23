@@ -32,7 +32,12 @@ Step Three : Copy the ```linkedin``` folder.
 
 Step Four : Locate XAMPP Server's root directory, and you will find a folder called ```htdocs```. Paste the copied folder inside ```htdocs``` folder.
 
-Step Five : Run the XAMPP Apache Server, and make sure it runs on ```PORT 80 , 443```.
+Step Five : Open the copied ```linkedin``` folder in ```htdocs```, and open a Command Prompt in that directory. Then run
+```sh
+composer require guzzlehttp/guzzle
+```
+
+Step Six : Run the XAMPP Apache Server, and make sure it runs on ```PORT 80 , 443```.
 
 
 ## How to Test ?

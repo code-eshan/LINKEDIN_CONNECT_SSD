@@ -51,7 +51,7 @@ Provide your user credentials and allow the LinkedIn Connect App's Permissions.
 
 Then you'll be redirected to another webpage, where you can find the information related to your account.
 
-> NOTE : IN-ORDER FOR THE BELOW FEATURES (SECTION 1, SECTION 2, SECTION 3) TO WORK, YOU MUST HAVE SUCCESSFULLY CONFIGURED THE THINGS REQUIRED IN THE PRE-REQUISITES SECTION ABOVE.
+> ![#FFA500](https://via.placeholder.com/15/FFA500/000000?text=+) ![#FFA500](https://via.placeholder.com/15/FFA500/000000?text=+) ![#FFA500](https://via.placeholder.com/15/FFA500/000000?text=+) NOTE : IN-ORDER FOR THE BELOW FEATURES (SECTION 1, SECTION 2, SECTION 3) TO WORK, YOU MUST HAVE SUCCESSFULLY CONFIGURED THE THINGS REQUIRED IN THE PRE-REQUISITES SECTION ABOVE.
 
 ### SECTION 1 : Publishing a Post in LinkedIn
 
